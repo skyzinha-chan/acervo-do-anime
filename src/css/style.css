@@ -123,10 +123,21 @@ footer {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
 }
 .card img {
-  max-width: 60%; /* Ajusta a largura da imagem */
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  width: 100%; /* A imagem tentará ocupar toda a largura do card */
+
+  /* Use 'height' para definir um tamanho padrão menor. 
+     Ajuste este valor como preferir! */
+  height: 200px;
+
+  /* ESSENCIAL: Garante que a imagem inteira apareça, sem cortes. */
+  object-fit: contain;
+
+  /* Opcional: Adiciona uma cor de fundo sutil para o espaço que sobra,
+     reforçando a ideia de "moldura" do pôster. */
+  background-color: #f0f0f0;
+
+  border-radius: 5px;
+  margin-bottom: 1px; /* Espaço entre a imagem e o conteúdo do card */
 }
 
 .card h3,
