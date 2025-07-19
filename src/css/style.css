@@ -1,0 +1,296 @@
+/* --- Aplicar box-sizing universalmente --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Isso faz com que o conteúdo do elemento seja ajustado para caber dentro do elemento */
+}
+
+/* Reset e base */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0; /* Remove a margem padrão */
+  padding: 0; /* Remove o preenchimento padrão */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #3a86ffff; /* Cor de fundo do corpo */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura total da janela */
+}
+
+h1,
+h2,
+h3,
+p {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin: 10px; /* Margem padrão */
+  width: 100%; /* Garante que o título ocupe toda a largura para centralizar corretamente */
+}
+
+/* Estrutura */
+header {
+  background-color: #8338ecff;
+  padding: 20px; /* Adiciona um pouco de espaçamento interno */
+}
+
+#quadradoMaior {
+  display: flex; /* Usar flexbox para organizar os elementos dentro do container */
+  flex: 1; /* Faz este container crescer para ocupar o espaço disponível entre o header e o footer */
+  background-color: #3a86ffff;
+  border-radius: 30px; /* Bordas arredondadas */
+  margin: 0;
+  width: 100%; /* Garante que ocupe toda a largura da tela */
+}
+
+#quadradoEsquerdo {
+  width: 20%;
+  background-color: #ffbe0bff;
+  margin: 0;
+  display: flex; /* Ativa o flexbox */
+  flex-direction: column; /* Organiza em coluna */
+  align-items: flex-start; /* Alinha o conteúdo ao início (esquerda) */
+  padding: 10px; /* Adicionado um padding para os links não colarem na borda */
+}
+
+nav {
+  height: 100%; /* Altura total da tela */
+  width: 100%; /* Faz o nav ocupar toda a largura do container-links */
+  padding: 0; /* Remove padding extra se necessário */
+  background-color: transparent;
+  display: block; /* Remove flex do nav para não centralizar os itens dentro dele */
+}
+
+nav ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#portaCard {
+  width: 80%;
+  background-color: #3a86ffff;
+  padding: 35px; /* Adiciona espaçamento interno à esquerda */
+  display: flex;
+  flex-direction: column; /* Organiza o h2 e o .cards-wrapper em coluna */
+  align-items: flex-start; /* Centraliza o h2 e o .cards-wrapper horizontalmente */
+  gap: 20px; /* Espaçamento entre o título e o wrapper dos cards */
+  margin: 0;
+}
+
+footer {
+  background-color: #8338ecff;
+  color: white;
+  padding: 10px; /* Adiciona um pouco de espaçamento interno */
+}
+
+/* Componentes */
+#seguraCards {
+  display: flex; /* Ativa o flexbox para alinhar os cards */
+  flex-wrap: wrap; /* Permite que os cards se movam para a próxima linha se não houver espaço suficiente */
+  gap: 20px; /* Espaçamento entre os cards */
+  justify-content: flex-start; /* Alinha os cards ao início ou use space-around/center */
+  width: 100%; /* Ocupa toda a largura do #container-cards */
+  border-radius: 30px; /* Bordas arredondadas */
+  margin: 0 auto; /* Centraliza o container horizontalmente */
+  box-sizing: border-box; /* Para que padding e border não aumentem a largura calculada */
+}
+
+.card {
+  background-color: #ff006eff; /* Cor de fundo para o card */
+  min-height: 280px; /* Altura mínima para o card */
+  width: 280px;
+  box-sizing: border-box; /* Para que padding e border não aumentem a largura calculada */
+  display: flex; /* Permite o uso de flexbox dentro do card */
+  flex-direction: column; /* Alinha o conteúdo do card (h3, p) em coluna */
+  align-items: center; /* Centraliza o conteúdo do card horizontalmente */
+  padding: 15px;
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+  transition: transform 0.3s ease, box-shadow 0.6s ease; /* Transição suave para a sombra */
+}
+
+/* --- Efeito de hover nos cards --- */
+.card:hover {
+  transform: translateY(-5px); /* Move o card um pouco para cima */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
+}
+.card img {
+  max-width: 60%; /* Ajusta a largura da imagem */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card h3,
+.card p {
+  text-align: center; /* Garante que o texto dentro do card também seja centralizado */
+  width: 100%; /* Para que o text-align:center funcione bem */
+}
+
+.card h3 {
+  font-size: 1.1em; /* Tamanho do título do livro */
+  margin-bottom: 5px;
+}
+
+.card .ano {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #f0f0f0; /* Cor mais suave para o nome do ano */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card .preco {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fb5607ff;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card .descricao {
+  font-size: 0.85em;
+  text-align: left; /* Alinha a descrição à esquerda dentro do card */
+  width: 100%;
+}
+
+/* Utilitários e pseudo-classes */
+/* --- Estilização do Menu de Navegação --- */
+nav ul li {
+  transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+  list-style: none; /* Remove as bolinhas da lista */
+  margin: 10px 0; /* Ajustado para espaçamento vertical */
+  background-color: #fb5607ff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center; /* Alinha o conteúdo do item da lista */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  background-color: #ff006eff; /* Cor de fundo ao passar o mouse */
+}
+
+/* ============================================== */
+/* --- Estilização do Bloco de Busca --- */
+/* ============================================== */
+
+.texto-busca {
+  display: none;
+}
+
+.bloco-busca {
+  width: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Fundo sutil para agrupar os elementos */
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+  align-items: center;
+  gap: 15px; /* Espaço entre os elementos */
+  margin-bottom: 10px; /* Espaço antes dos cards */
+}
+
+.busca-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+}
+
+.busca-container {
+  flex-grow: 1; /* Faz o campo de busca ocupar o espaço disponível */
+  min-width: 250px; /* Largura mínima antes de quebrar a linha */
+}
+
+#busca {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1em;
+  color: #333;
+  border: 2px solid transparent; /* Borda transparente para não mover no foco */
+  border-radius: 10px;
+  outline: none; /* Remove o contorno padrão do navegador */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#busca::placeholder {
+  color: #999;
+}
+
+/* Efeito de foco para dar feedback visual */
+#busca:focus {
+  border-color: #ff006eff; /* Usa uma das cores da paleta */
+  box-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+}
+
+.busca-filtros {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.filtro-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filtro-item label {
+  color: white;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+/* Ajusta o checkbox para ficar melhor alinhado */
+.filtro-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* ---  Estilização do Bloco de Busca --- */
+@media (max-width: 768px) {
+  #quadradoMaior {
+    flex-direction: column;
+    border-radius: 0;
+  }
+
+  #quadradoEsquerdo,
+  #portaCard {
+    width: 100%;
+  }
+
+  .bloco-busca {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .busca-label {
+    text-align: left;
+  }
+
+  .busca-filtros {
+    justify-content: flex-start;
+  }
+}
+/* Cores de paleta neste link: https://coolors.co/palettes/trending */
